@@ -22,9 +22,9 @@ const Register = () => {
             iurenon!
           </p>
           <span>Do you have an account?</span>
-          {/* <Link to="/login"> */}
+          <Link to="/login">
             <button>Login</button>
-          {/* </Link> */}
+          </Link>
         </div>
       </div>
     </div>

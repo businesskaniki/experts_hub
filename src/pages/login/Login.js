@@ -12,9 +12,9 @@ const Login = () => {
             iurenon!
           </p>
           <span>Don't have an account?</span>
-          {/* <Link to="/register"> */}
+          <Link to="/register">
             <button>Register</button>
-          {/* </Link> */}
+          </Link>
         </div>
         <div className="right">
           <h1>Login</h1>
