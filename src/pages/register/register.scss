@@ -1,0 +1,102 @@
+/* SCSS HEX */
+$space-cadet: #2b2d42ff;
+$crimson: #a51c30ff;
+$cardinal: rgb(234, 215, 217);
+$persian-green: #17a398ff;
+$white: #ffffffff;
+
+.register{
+    height: 100vh;
+    background-color: $cardinal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .card{
+        display: flex;
+        width: 60%;
+        border-radius: 10px;
+        background-color: $white;
+        min-height: 600px;
+        overflow: hidden;
+        .left{
+            color: $white;
+            flex: 1;
+            background: linear-gradient(rgba(46, 45, 152, 0.5), rgba(111, 111, 208, 0.5)), url("https://media.istockphoto.com/id/525486978/photo/handyman-repairing-sink-pipe.jpg?s=612x612&w=0&k=20&c=3hpKnvAE-YTe1o1J_HLEMRlpRKMsqfor8sKFAFnrrQE=") center;
+            background-size: cover;
+            padding: 20px 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: center;
+
+            h1{
+                font-size: 50px;
+                line-height:60px;
+            }
+
+            p{}
+
+            span{
+                font-size: 14px;
+            }
+
+            button{
+                width: 55%;
+                padding: 10px;
+                border: none;
+                background-color: $white;
+                color: $space-cadet;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+
+        .right{
+            flex: 1;
+            padding: 20px 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            justify-content: center;
+
+            h1{
+                color: $space-cadet;
+            }
+
+            form{
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+                input{
+                    border: none;
+                    border-bottom: 1px solid $crimson;
+                    padding: 10px 0px;
+                }
+
+                input:focus {
+                    outline: none;
+                }
+
+                select {
+                    border: none;
+                    border-bottom: 1px solid $crimson;
+                    padding: 10px 0px;
+                }
+
+                select:focus {
+                    outline: none;
+                }
+                button{
+                    width: 50%;
+                    padding: 7px 10px;
+                    border: none;
+                    background-color: $space-cadet;
+                    color: $white;
+                    cursor: pointer;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
