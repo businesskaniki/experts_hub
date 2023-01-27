@@ -1,0 +1,44 @@
+/* SCSS HEX */
+$space-cadet: #2b2d42ff;
+$crimson: #a51c30ff;
+$cardinal: rgb(234, 215, 217);
+$persian-green: #17a398ff;
+$white: #ffffffff;
+
+.leftbar {
+    .container {
+        padding: 20px;
+        border-right: 2px solid $crimson;
+        height: calc(100vh - 110px);
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .user {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                img {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                span {}
+            }
+            .item {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 30px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                span {}
+            }
+        }
+    }
+}
