@@ -61,6 +61,26 @@ function App() {
       path: "/register",
       element: <Register />,
     },
+    {
+      path: "/reservations",
+      element: <Register />,
+    },
+    {
+      path: "/technicians",
+      element: <Register />,
+    },
+    {
+      path: "/new-reservation",
+      element: <Register />,
+    },
+    {
+      path: "/new-techncian",
+      element: <Register />,
+    },
+    {
+      path: "/technician/:id",
+      element: <Register />,
+    },
   ]);
 
   return (
