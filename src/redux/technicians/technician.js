@@ -48,7 +48,13 @@ export const addTechnician = createAsyncThunk(
   }
 );
 
-
+export const deleteTechnician = createAsyncThunk(
+  'DELETE_TECHNICIAN',
+  async(id)=>{
+    const response = await axios.delete(`${BASE_URL}/${id}`)
+    return response.data
+  }
+);
 
 
 export default reducerTechnician;
