@@ -40,6 +40,14 @@ export const getTechnicianDetail = createAsyncThunk(
   }
 );
 
+export const addTechnician = createAsyncThunk(
+  'ADD_TECHNICIAN',
+  async(technician)=>{
+    const response = await axios.post(BASE_URL, technician);
+    return response.data
+  }
+);
+
 
 
 
