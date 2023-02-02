@@ -6,10 +6,12 @@ $persian-green: #17a398ff;
 $white: #ffffffff;
 
 .leftbar {
+    position: sticky;
+    top: 60px;
+    border-right: 1px solid $crimson;
+    height: calc(100vh - 110px);
     .container {
         padding: 20px;
-        border-right: 2px solid $crimson;
-        height: calc(100vh - 110px);
         .menu {
             display: flex;
             flex-direction: column;
@@ -30,6 +32,7 @@ $white: #ffffffff;
             .item {
                 display: flex;
                 align-items: center;
+                cursor: pointer;
 
                 img {
                     width: 30px;
