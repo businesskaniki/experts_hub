@@ -70,6 +70,20 @@ form{
       align-items: center;
       gap: .4rem
     }
+
+    .delete{
+      align-items: center;
+      background: red;
+      padding: .3rem .6rem;
+      border-radius: .2rem;
+      color: rgb(200, 200, 200);
+      width: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+      border: none;
+    }
   }
 
 

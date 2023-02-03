@@ -1,21 +1,25 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {getTechnicianDetail} from '../../redux/technicians/technician';
+import {getTechnicianDetail, deleteTechnician} from '../../redux/technicians/technician';
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 
 
 const TechnicianDetails = () => {
-
+  
   const dispatch = useDispatch();
   const technician = useSelector(state => state.technician)
-  console.log(technician);
   const param = useParams()
   const  {id} = param;
 
   useEffect(()=>{
     dispatch(getTechnicianDetail(id))
   }, [dispatch, id])
+
+  const handleDelete = (e) => {
+    dispatch(deleteTechnician(e.target.id))
+  }
 
   return (
     <div className="card-technician__details">
@@ -33,6 +37,7 @@ const TechnicianDetails = () => {
           <span>{technician.specialization}</span>
         </p>
         <p className=''><RoomOutlinedIcon />{technician.location}</p>
+        <button href="#" className="delete" id={technician.id} onClick={handleDelete}><DeleteForeverRoundedIcon /></button>
       </div>
     </div>
   );
