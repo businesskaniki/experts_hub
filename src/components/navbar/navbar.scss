@@ -12,6 +12,9 @@ $white: #ffffffff;
   padding: 5px 20px;
   height: 50px;
   border-bottom: 1px solid lightgray;
+  position: sticky;
+  background-color: white;
+  top: 0;
   .left {
     display: flex;
     align-items: center;
