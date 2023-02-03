@@ -9,6 +9,8 @@ import Register from "./pages/register/Register";
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
+import AddTechnician from "./pages/technician/technician";
+import TechnicianDetails from './pages/technician/TechnicianDetail'
 
 function App() {
 
@@ -50,6 +52,14 @@ function App() {
         {
           path: "/profile/:id",
           element: <Profile />,
+        },
+        {
+          path: "/technician",
+          element: <AddTechnician />,
+        },
+        {
+          path: "/technician/:id",
+          element: <TechnicianDetails />,
         },
       ],
     },

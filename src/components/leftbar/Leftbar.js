@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Person from "../../assets/picon.png";
 import "./leftbar.scss";
 
@@ -14,14 +15,36 @@ const Leftbar = () => {
             />
             <span>John Doe</span>
           </div>
-          <div className="item">
-            <img src={Person} alt="" />
-            <span>Home</span>
-          </div>
-          <div className="item">
-            <img src={Person} alt="" />
-            <span>Reservation</span>
-          </div>
+          <Link to="/">
+            <div className="item">
+              <img src={Person} alt="" />
+              <span>Home</span>
+            </div>
+          </Link>
+          <Link to="/technician/:id" style={{ textDecoration: "none" }}>
+            <div className="item">
+              <img src={Person} alt="" />
+              <span>Technicians</span>
+            </div>
+          </Link>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <div className="item">
+              <img src={Person} alt="" />
+              <span>Add Reservation</span>
+            </div>
+          </Link>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <div className="item">
+              <img src={Person} alt="" />
+              <span>My Reservations</span>
+            </div>
+          </Link>
+          <Link to="/technician" style={{ textDecoration: "none" }}>
+            <div className="item">
+              <img src={Person} alt="" />
+              <span>Add Technician</span>
+            </div>
+          </Link>
         </div>
       </div>
     </div>
