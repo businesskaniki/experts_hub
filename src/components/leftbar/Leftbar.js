@@ -15,11 +15,13 @@ const Leftbar = () => {
             />
             <span>John Doe</span>
           </div>
-          <div className="item">
-            <img src={Person} alt="" />
-            <span>Home</span>
-          </div>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/">
+            <div className="item">
+              <img src={Person} alt="" />
+              <span>Home</span>
+            </div>
+          </Link>
+          <Link to="/technician/:id" style={{ textDecoration: "none" }}>
             <div className="item">
               <img src={Person} alt="" />
               <span>Technicians</span>
@@ -37,7 +39,7 @@ const Leftbar = () => {
               <span>My Reservations</span>
             </div>
           </Link>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/technician" style={{ textDecoration: "none" }}>
             <div className="item">
               <img src={Person} alt="" />
               <span>Add Technician</span>

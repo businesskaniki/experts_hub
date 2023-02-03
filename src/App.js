@@ -4,12 +4,13 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-import Reservation from "./pages/reservation/Reservation";
 
 
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
+import AddTechnician from "./pages/technician/technician";
+import TechnicianDetails from './pages/technician/TechnicianDetail'
 
 function App() {
 
@@ -53,24 +54,12 @@ function App() {
           element: <Profile />,
         },
         {
-          path: "/reservations",
-          element: <Reservation />,
-        },
-        {
-          path: "/technicians",
-          element: <Register />,
-        },
-        {
-          path: "/new-reservation",
-          element: <Register />,
-        },
-        {
-          path: "/new-techncian",
-          element: <Register />,
+          path: "/technician",
+          element: <AddTechnician />,
         },
         {
           path: "/technician/:id",
-          element: <Register />,
+          element: <TechnicianDetails />,
         },
       ],
     },
