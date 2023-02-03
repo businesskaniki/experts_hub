@@ -24,6 +24,15 @@ const reducerTechnician = (state= [], action) => {
   
 }
 
+export const reducerSingleTechnician = (state=[], action) => {
+  switch(action.type){
+    case 'GET_TECHNICIAN_DETAILS/fulfilled':{
+      return {...state,...action.payload}
+    }
+    default: return state;
+  }
+}
+
 export const getAllTechnicians = createAsyncThunk(
   'GET_ALL_TECHNICIANS',
   async()=>{
