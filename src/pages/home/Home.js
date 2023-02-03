@@ -32,20 +32,17 @@ const Home = () => {
         slidesPerView={2}
         centeredSlides={true}
         spaceBetween={40}
-        // pagination={{
-        //   type: "fraction",
-        // }}
         navigation={true}
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
         {technicians.map((technician) => (
-          <SwiperSlide className="card-technician">
+          <SwiperSlide className="card-technician" key={technician.id}>
             <div className="card-image">
               <img src={technician.image} alt={technician.name} />
             </div>
             <div className="card-body">
-              <Link to={`/technicians/${technician.id}`}>
+              <Link to={`/technician/${technician.id}`}>
                 <h2>{technician.name}</h2>
               </Link>
 
