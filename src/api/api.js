@@ -11,3 +11,7 @@ export const loginUser = (data) => {
     user: data,
   });
 };
+
+export const logoutUser = () => {
+  return axios.delete('http://localhost:3000/users/sign_out');
+};
