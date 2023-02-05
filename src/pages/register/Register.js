@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./register.scss";
 import { registerUser } from "../../api/api";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -26,26 +26,22 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage("");
-    if ((formData.name || formData.email || formData.password) === "") {
-      console.log("Input empty");
-    } else {
-      try {
-        let response;
-        response = await registerUser(formData);
-        console.log(response.data.status.message);
-        setResponse(response.data.status);
+
+    try {
+      let response;
+      response = await registerUser(formData);
+      setResponse(response.data.status);
+      setErrorMessage(response.data.status.errors);
+      if (response.data.status.code === 200) {
+        console.log(response.data.status.code);
+        toast("Account created successfully");
+        navigate("/login");
+      } else {
         setErrorMessage(response.data.status.errors);
-        if (response.data.status.code === 200) {
-          console.log(response.data.status.code);
-          console.log("We dey here");
-          navigate("/login");
-        } else {
-          setErrorMessage(response.data.status.errors);
-        }
-        // Handle successful response
-      } catch (error) {
-        setErrorMessage(error.message);
       }
+      // Handle successful response
+    } catch (error) {
+      setErrorMessage(error.message);
     }
   };
 
@@ -55,7 +51,6 @@ const Register = () => {
         <div className="right">
           <h1>Register</h1>
           <form onSubmit={handleSubmit}>
-            
             <input
               type="text"
               name="name"

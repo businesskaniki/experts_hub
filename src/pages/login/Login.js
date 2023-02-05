@@ -1,7 +1,44 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./login.scss";
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "../../api/api";
 
 const Login = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    password: "",
+  });
+  const [response, setResponse] = useState("");
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      let response;
+      response = await loginUser(formData);
+      console.log(response);
+      if (response.data.token) {
+        localStorage.setItem("expert-token", response.data.token);
+        localStorage.setItem("expert-current-user", response.data.user.id);
+        navigate("/");
+      } else {
+        setError(response.data.error);
+      }
+    } catch (error) {
+      setError("An error occurred while trying to log in.");
+    }
+  };
+
   return (
     <div className="login">
       <div className="card">
@@ -18,10 +55,25 @@ const Login = () => {
         </div>
         <div className="right">
           <h1>Login</h1>
-          <form action="">
-            <input type="text" name="name" id="name" placeholder="Name" />
-            <input type="text" name="password" id="password" placeholder="Password" />
-            <button>Login</button>
+          <form onSubmit={handleSubmit}>
+          <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            <button type="submit">Login</button>
+            {error && <div>{error}</div>}
           </form>
         </div>
       </div>
