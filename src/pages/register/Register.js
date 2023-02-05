@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./register.scss";
 import { registerUser } from "../../api/api";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +12,9 @@ const Register = () => {
     password: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
+  const [response, setResponse] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -21,13 +26,26 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage("");
-    try {
-      let response;
-      response = await registerUser(formData);
-      console.log(response.data);
-      // Handle successful response
-    } catch (error) {
-      setErrorMessage(error.message);
+    if ((formData.name || formData.email || formData.password) === "") {
+      console.log("Input empty");
+    } else {
+      try {
+        let response;
+        response = await registerUser(formData);
+        console.log(response.data.status.message);
+        setResponse(response.data.status);
+        setErrorMessage(response.data.status.errors);
+        if (response.data.status.code === 200) {
+          console.log(response.data.status.code);
+          console.log("We dey here");
+          navigate("/login");
+        } else {
+          setErrorMessage(response.data.status.errors);
+        }
+        // Handle successful response
+      } catch (error) {
+        setErrorMessage(error.message);
+      }
     }
   };
 
@@ -37,7 +55,7 @@ const Register = () => {
         <div className="right">
           <h1>Register</h1>
           <form onSubmit={handleSubmit}>
-            {errorMessage && <div>{errorMessage}</div>}
+            
             <input
               type="text"
               name="name"
@@ -47,16 +65,28 @@ const Register = () => {
               onChange={handleChange}
             />
             <input
-              type="text"
+              type="email"
               name="email"
               id="email"
               placeholder="Email"
               value={formData.email}
               onChange={handleChange}
             />
-            <input type="text" name="password" id="password" placeholder="Password" value={formData.password}
-              onChange={handleChange} />
-            <input type="text" name="cpassword" id="cpassword" placeholder="Confirm Password" />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            {errorMessage && (
+              <div>
+                {errorMessage.map((each, index) => {
+                  return <div key={index}>⚠ {each}</div>;
+                })}
+              </div>
+            )}
             <button type="submit">Register</button>
           </form>
         </div>
