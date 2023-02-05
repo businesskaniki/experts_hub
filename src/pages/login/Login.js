@@ -29,7 +29,7 @@ const Login = () => {
       console.log(response);
       if (response.data.token) {
         localStorage.setItem("expert-token", response.data.token);
-        localStorage.setItem("expert-current-user", response.data.user.id);
+        localStorage.setItem("expert-current-user", JSON.stringify(response.data.user));
         navigate("/");
       } else {
         setError(response.data.error);
