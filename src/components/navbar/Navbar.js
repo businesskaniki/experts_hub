@@ -18,6 +18,8 @@ const Navbar = () => {
       let response;
       response = await logoutUser();
       if (response.data.status === 204) {
+        localStorage.removeItem("expert-token")
+        localStorage.removeItem("expert-current-user")
         navigate("/login");
       } else {
         setErrorMessage(response.data.message);
