@@ -22,8 +22,8 @@ const Home = () => {
   const dispatch = useDispatch();
   const technicians = useSelector(state => state.technicians);
   useEffect(() => {
-    dispatch(getAllTechnicians());
-  }, [dispatch]);
+    if (!technicians.length) dispatch(getAllTechnicians());
+  }, [dispatch, technicians]);
 
   return (
     <>
