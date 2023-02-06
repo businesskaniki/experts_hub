@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTechnician } from '../../redux/technicians/technician';
-import './technician.scss'
 import { useNavigate } from 'react-router-dom';
+import { addTechnician } from '../../redux/technicians/technician';
+import './technician.scss';
 
 const AddTechnician = () => {
   const [name, setName] = useState('');
@@ -11,9 +11,8 @@ const AddTechnician = () => {
   const [image, setImage] = useState('');
   const [specialization, setSpecialization] = useState('');
   const dispatch = useDispatch();
-  const add = useSelector(state => state.technicians);
+  const add = useSelector((state) => state.technicians);
   const navigate = useNavigate();
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +21,7 @@ const AddTechnician = () => {
       location,
       charges,
       image,
-      specialization
+      specialization,
     };
     dispatch(addTechnician(newTechnician));
     console.log(add.action);
@@ -32,12 +31,10 @@ const AddTechnician = () => {
     setImage('');
     setSpecialization('');
 
-  if (add.status === 'success') {
-    navigate('/')
-  }
+    if (add.status === 'success') {
+      navigate('/');
+    }
   };
-
-  
 
   return (
     <form onSubmit={handleSubmit}>

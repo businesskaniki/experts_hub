@@ -1,10 +1,11 @@
 #app {
   height: 100%;
 }
+
 * {
   box-sizing: border-box;
-
 }
+
 html,
 body {
   position: relative;
@@ -23,17 +24,17 @@ body {
 
 a {
   text-decoration: none;
-  color:rgb(62, 62, 62);
+  color: rgb(62, 62, 62);
 }
 
 .swiper-slide {
-  width: 300px!important;
+  width: 300px !important;
   height: inherit;
   background: #007aff;
   border-radius: 1.5rem;
   padding-top: 1rem;
   display: flex;
-  overflow: hidden;  
+  overflow: hidden;
 }
 
 .swiper-slide img {
@@ -50,6 +51,7 @@ a {
   padding: 1rem 5rem;
   position: relative;
 }
+
 .append-buttons {
   text-align: center;
   margin-top: 20px;
@@ -66,7 +68,6 @@ a {
   border-radius: 4px;
   margin: 1rem 10px;
   font-size: 13px;
-
 }
 
 .swiper-slide div:nth-child(1) {
