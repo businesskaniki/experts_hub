@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./register.scss";
-import { registerUser } from "../../api/api";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './register.scss';
+import { toast } from 'react-toastify';
+import { registerUser } from '../../api/api';
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
+    name: '',
+    email: '',
+    password: '',
   });
-  const [errorMessage, setErrorMessage] = useState("");
-  const [response, setResponse] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
+  const [response, setResponse] = useState('');
 
   const navigate = useNavigate();
 
@@ -25,7 +24,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage("");
+    setErrorMessage('');
 
     try {
       let response;
@@ -34,8 +33,8 @@ const Register = () => {
       setErrorMessage(response.data.status.errors);
       if (response.data.status.code === 200) {
         console.log(response.data.status.code);
-        toast("Account created successfully");
-        navigate("/login");
+        toast('Account created successfully');
+        navigate('/login');
       } else {
         setErrorMessage(response.data.status.errors);
       }
@@ -77,9 +76,12 @@ const Register = () => {
             />
             {errorMessage && (
               <div>
-                {errorMessage.map((each, index) => {
-                  return <div key={index}>⚠ {each}</div>;
-                })}
+                {errorMessage.map((each, index) => (
+                  <div key={index}>
+                    ⚠
+                    {each}
+                  </div>
+                ))}
               </div>
             )}
             <button type="submit">Register</button>

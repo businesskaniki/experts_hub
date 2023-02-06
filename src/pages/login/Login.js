@@ -1,16 +1,15 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./login.scss";
-import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../api/api";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './login.scss';
+import { loginUser } from '../../api/api';
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    password: "",
+    name: '',
+    password: '',
   });
-  const [response, setResponse] = useState("");
-  const [error, setError] = useState("");
+  const [response, setResponse] = useState('');
+  const [error, setError] = useState('');
 
   const navigate = useNavigate();
 
@@ -28,14 +27,14 @@ const Login = () => {
       response = await loginUser(formData);
       console.log(response);
       if (response.data.token) {
-        localStorage.setItem("expert-token", response.data.token);
-        localStorage.setItem("expert-current-user", JSON.stringify(response.data.user));
-        navigate("/");
+        localStorage.setItem('expert-token', response.data.token);
+        localStorage.setItem('expert-current-user', JSON.stringify(response.data.user));
+        navigate('/');
       } else {
         setError(response.data.error);
       }
     } catch (error) {
-      setError("An error occurred while trying to log in.");
+      setError('An error occurred while trying to log in.');
     }
   };
 
@@ -56,7 +55,7 @@ const Login = () => {
         <div className="right">
           <h1>Login</h1>
           <form onSubmit={handleSubmit}>
-          <input
+            <input
               type="text"
               name="name"
               id="name"

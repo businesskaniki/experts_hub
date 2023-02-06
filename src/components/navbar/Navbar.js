@@ -1,13 +1,12 @@
-import "./navbar.scss";
-import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import { Link } from "react-router-dom";
-import { logoutUser } from "../../api/api";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import './navbar.scss';
+import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { logoutUser } from '../../api/api';
 
 const Navbar = () => {
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -18,20 +17,20 @@ const Navbar = () => {
       let response;
       response = await logoutUser();
       if (response.data.status === 204) {
-        localStorage.removeItem("expert-token")
-        localStorage.removeItem("expert-current-user")
-        navigate("/login");
+        localStorage.removeItem('expert-token');
+        localStorage.removeItem('expert-current-user');
+        navigate('/login');
       } else {
         setErrorMessage(response.data.message);
       }
     } catch (error) {
-      console.log("errorssss");
+      console.log('errorssss');
     }
   };
   return (
     <div className="navbar">
       <div className="left">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/" style={{ textDecoration: 'none' }}>
           <span>ExpertsHub</span>
         </Link>
         <GridViewOutlinedIcon />

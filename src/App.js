@@ -1,33 +1,30 @@
+import {
+  createBrowserRouter, Navigate, Outlet, RouterProvider,
+} from 'react-router-dom';
+import Leftbar from './components/leftbar/Leftbar';
+import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/Footer';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
 
-import Leftbar from "./components/leftbar/Leftbar";
-import Navbar from "./components/navbar/Navbar";
-import Footer from "./components/footer/Footer";
-import Login from "./pages/login/Login";
-import Register from "./pages/register/Register";
-
-
-import { createBrowserRouter, Navigate, Outlet, RouterProvider } from "react-router-dom";
-import Home from "./pages/home/Home";
-import Profile from "./pages/profile/Profile";
-import AddTechnician from "./pages/technician/technician";
-import TechnicianDetails from './pages/technician/TechnicianDetail'
+import Home from './pages/home/Home';
+import Profile from './pages/profile/Profile';
+import AddTechnician from './pages/technician/technician';
+import TechnicianDetails from './pages/technician/TechnicianDetail';
 
 function App() {
-
   const currentUser = true;
 
-  const Layout = () => {
-    return (
-      <div>
-        <Navbar />
-        <div style={{ display: "flex" }}>
-          <Leftbar />
-          <Outlet />
-        </div>
-        <Footer />
+  const Layout = () => (
+    <div>
+      <Navbar />
+      <div style={{ display: 'flex' }}>
+        <Leftbar />
+        <Outlet />
       </div>
-    );
-  };
+      <Footer />
+    </div>
+  );
 
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {
@@ -38,7 +35,7 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       element: (
         <ProtectedRoute>
           <Layout />
@@ -46,29 +43,29 @@ function App() {
       ),
       children: [
         {
-          path: "/",
+          path: '/',
           element: <Home />,
         },
         {
-          path: "/profile/:id",
+          path: '/profile/:id',
           element: <Profile />,
         },
         {
-          path: "/technician",
+          path: '/technician',
           element: <AddTechnician />,
         },
         {
-          path: "/technician/:id",
+          path: '/technician/:id',
           element: <TechnicianDetails />,
         },
       ],
     },
     {
-      path: "/login",
+      path: '/login',
       element: <Login />,
     },
     {
-      path: "/register",
+      path: '/register',
       element: <Register />,
     },
   ]);

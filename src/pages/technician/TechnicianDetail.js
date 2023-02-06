@@ -1,25 +1,23 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import {getTechnicianDetail, deleteTechnician} from '../../redux/technicians/technician';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
-
+import { getTechnicianDetail, deleteTechnician } from '../../redux/technicians/technician';
 
 const TechnicianDetails = () => {
-  
   const dispatch = useDispatch();
-  const technician = useSelector(state => state.technician)
-  const param = useParams()
-  const  {id} = param;
+  const technician = useSelector((state) => state.technician);
+  const param = useParams();
+  const { id } = param;
 
-  useEffect(()=>{
-    dispatch(getTechnicianDetail(id))
-  }, [dispatch, id])
+  useEffect(() => {
+    dispatch(getTechnicianDetail(id));
+  }, [dispatch, id]);
 
   const handleDelete = (e) => {
-    dispatch(deleteTechnician(e.target.id))
-  }
+    dispatch(deleteTechnician(e.target.id));
+  };
 
   return (
     <div className="card-technician__details">
@@ -30,18 +28,23 @@ const TechnicianDetails = () => {
         <h2>{technician.name}</h2>
         <p>
           <span>Charges per Hours: </span>
-          <span>${technician.charges}</span>
+          <span>
+            $
+            {technician.charges}
+          </span>
         </p>
         <p>
           <span>Specialization: </span>
           <span>{technician.specialization}</span>
         </p>
-        <p className=''><RoomOutlinedIcon />{technician.location}</p>
+        <p className="">
+          <RoomOutlinedIcon />
+          {technician.location}
+        </p>
         <button href="#" className="delete" id={technician.id} onClick={handleDelete}><DeleteForeverRoundedIcon /></button>
       </div>
     </div>
   );
-
-}
+};
 
 export default TechnicianDetails;
