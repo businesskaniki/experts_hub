@@ -16,7 +16,6 @@ const TechnicianDetails = () => {
   }, [dispatch, id]);
 
   const handleDelete = () => {
-    console.log(id);
     dispatch(deleteTechnician(id));
   };
 
@@ -42,7 +41,7 @@ const TechnicianDetails = () => {
           <RoomOutlinedIcon />
           {technician.location}
         </p>
-        <button type="button" className="delete" id={technician.id} onClick={handleDelete}><DeleteForeverRoundedIcon /></button>
+        <button type="button" aria-label="Save" id={technician.id} onClick={handleDelete}><DeleteForeverRoundedIcon /></button>
       </div>
     </div>
   );
