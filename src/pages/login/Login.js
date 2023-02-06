@@ -8,7 +8,6 @@ const Login = () => {
     name: '',
     password: '',
   });
-  const [response, setResponse] = useState('');
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
@@ -23,9 +22,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      let response;
-      response = await loginUser(formData);
-      console.log(response);
+      const response = await loginUser(formData);
       if (response.data.token) {
         localStorage.setItem('expert-token', response.data.token);
         localStorage.setItem('expert-current-user', JSON.stringify(response.data.user));
@@ -47,9 +44,9 @@ const Login = () => {
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea iusto aut omnis commodi sit
             iurenon!
           </p>
-          <span>Don't have an account?</span>
+          <span>Don&apos;t have an account?</span>
           <Link to="/register">
-            <button>Register</button>
+            <button type="submit">Register</button>
           </Link>
         </div>
         <div className="right">

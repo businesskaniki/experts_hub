@@ -13,7 +13,7 @@ import { Pagination, Navigation } from 'swiper';
 import { getAllTechnicians } from '../../redux/technicians/technician';
 
 const Home = () => {
-  const [swiperRef, setSwiperRef] = useState(null);
+  const [, setSwiperRef] = useState(null);
 
   const dispatch = useDispatch();
   const technicians = useSelector((state) => state.technicians);
@@ -48,7 +48,7 @@ const Home = () => {
                   {technician.location}
                 </p>
                 <p>{technician.specialization}</p>
-                <a href="#" className="button">Appointment</a>
+                <a href="#button" className="button">Appointment</a>
               </div>
             </div>
           </SwiperSlide>
