@@ -14,8 +14,7 @@ const Navbar = () => {
     e.preventDefault();
 
     try {
-      let response;
-      response = await logoutUser();
+      const response = await logoutUser();
       if (response.data.status === 204) {
         localStorage.removeItem('expert-token');
         localStorage.removeItem('expert-current-user');
@@ -24,7 +23,7 @@ const Navbar = () => {
         setErrorMessage(response.data.message);
       }
     } catch (error) {
-      console.log('errorssss');
+      setErrorMessage(error.data.message);
     }
   };
   return (
@@ -40,8 +39,9 @@ const Navbar = () => {
         </div>
       </div>
       <div className="right">
-        <button onClick={handleClick}>Logout</button>
+        <button type="button" onClick={handleClick}>Logout</button>
         <div className="user">
+          <p>{errorMessage}</p>
           <img
             src="https://media.istockphoto.com/id/525486978/photo/handyman-repairing-sink-pipe.jpg?s=612x612&w=0&k=20&c=3hpKnvAE-YTe1o1J_HLEMRlpRKMsqfor8sKFAFnrrQE="
             alt="profile pic"
