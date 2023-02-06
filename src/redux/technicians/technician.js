@@ -24,6 +24,15 @@ const reducerTechnician = (state= [], action) => {
   
 }
 
+export const reducerAddTechnician = (state={}, action) => {
+  switch(action.type){
+    case 'ADD_TECHNICIAN/fulfilled': {
+      return {...state, ...action.payload}
+    }
+    default: return state;
+  }
+}
+
 export const reducerSingleTechnician = (state=[], action) => {
   switch(action.type){
     case 'GET_TECHNICIAN_DETAILS/fulfilled':{

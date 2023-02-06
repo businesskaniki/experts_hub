@@ -5,7 +5,7 @@ import reducerTechnician, {reducerSingleTechnician} from './technicians/technici
 
 const rootReducer = combineReducers({
   technicians: reducerTechnician,
-  technician: reducerSingleTechnician
+  technician: reducerSingleTechnician,
 });
 
 const store = createStore(rootReducer, applyMiddleware(logger, thunk));
