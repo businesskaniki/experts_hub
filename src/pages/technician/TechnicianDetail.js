@@ -15,8 +15,9 @@ const TechnicianDetails = () => {
     dispatch(getTechnicianDetail(id));
   }, [dispatch, id]);
 
-  const handleDelete = (e) => {
-    dispatch(deleteTechnician(e.target.id));
+  const handleDelete = () => {
+    console.log(id);
+    dispatch(deleteTechnician(id));
   };
 
   return (
@@ -41,7 +42,7 @@ const TechnicianDetails = () => {
           <RoomOutlinedIcon />
           {technician.location}
         </p>
-        <button href="#" className="delete" id={technician.id} onClick={handleDelete}><DeleteForeverRoundedIcon /></button>
+        <button type="button" className="delete" id={technician.id} onClick={handleDelete}><DeleteForeverRoundedIcon /></button>
       </div>
     </div>
   );
