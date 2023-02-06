@@ -11,7 +11,7 @@ const Register = () => {
     password: '',
   });
   const [errorMessage, setErrorMessage] = useState('');
-  const [response, setResponse] = useState('');
+  const [theResponse, setTheResponse] = useState('');
 
   const navigate = useNavigate();
 
@@ -27,12 +27,10 @@ const Register = () => {
     setErrorMessage('');
 
     try {
-      let response;
-      response = await registerUser(formData);
-      setResponse(response.data.status);
+      const response = await registerUser(formData);
+      setTheResponse(response.data.status);
       setErrorMessage(response.data.status.errors);
-      if (response.data.status.code === 200) {
-        console.log(response.data.status.code);
+      if (theResponse.code === 200) {
         toast('Account created successfully');
         navigate('/login');
       } else {
@@ -77,6 +75,7 @@ const Register = () => {
             {errorMessage && (
               <div>
                 {errorMessage.map((each, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
                   <div key={index}>
                     ⚠
                     {each}
@@ -95,7 +94,7 @@ const Register = () => {
           </p>
           <span>Do you have an account?</span>
           <Link to="/login">
-            <button>Login</button>
+            <button type="button">Login</button>
           </Link>
         </div>
       </div>
