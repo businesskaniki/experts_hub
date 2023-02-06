@@ -3,7 +3,7 @@ $space-cadet: #2b2d42ff;
 $crimson: #a51c30ff;
 $cardinal: rgb(234, 215, 217);
 $persian-green: #17a398ff;
-$white: #ffffffff;
+$white: #ffff;
 
 .navbar {
   display: flex;
@@ -15,13 +15,15 @@ $white: #ffffffff;
   position: sticky;
   background-color: white;
   top: 0;
+
   .left {
     display: flex;
     align-items: center;
     gap: 30px;
+
     span {
       font-weight: bold;
-      font-style: 20px;
+      font-size: 20px;
       color: $crimson;
     }
 
@@ -32,12 +34,14 @@ $white: #ffffffff;
       border: 1px solid $crimson;
       border-radius: 5px;
       padding: 5px;
+
       input {
         border: none;
         width: 500px;
       }
+
       input:focus {
-          outline: none;
+        outline: none;
       }
     }
   }
@@ -47,18 +51,25 @@ $white: #ffffffff;
     align-items: center;
     gap: 10px;
     font-weight: 500;
-    .user {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      img {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          object-fit: cover;
-      }
 
-      span {
+    button {
+      background-color: $crimson;
+      color: $white;
+      padding: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
       }
     }
   }
