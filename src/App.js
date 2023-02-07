@@ -13,7 +13,7 @@ import AddTechnician from './pages/technician/technician';
 import TechnicianDetails from './pages/technician/TechnicianDetail';
 
 function App() {
-  const currentUser = true;
+  const currentUser = localStorage.getItem('expert-current-user');
 
   const Layout = () => (
     <div>
