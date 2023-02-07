@@ -10,16 +10,27 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper';
+import ReactLoading from 'react-loading';
 import { getAllTechnicians } from '../../redux/technicians/technician';
 
 const Home = () => {
+  const [data, setData] = useState([]);
   const [, setSwiperRef] = useState(null);
 
   const dispatch = useDispatch();
   const technicians = useSelector((state) => state.technicians);
-  useEffect(() => {
+
+  const getAllData = async () => {
     dispatch(getAllTechnicians());
-  }, [dispatch]);
+  };
+
+  useEffect(() => {
+    getAllData();
+  }, []);
+  
+  useEffect(() => {
+    setData(technicians);
+  }, [technicians]);
 
   return (
     <>
@@ -32,7 +43,7 @@ const Home = () => {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        {technicians.map((technician) => (
+        {data.map((technician) => (
           <SwiperSlide className="card-technician" key={technician.id}>
             <div className="card-image">
               <img src={technician.image} alt={technician.name} />
