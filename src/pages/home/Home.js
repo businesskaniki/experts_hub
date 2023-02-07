@@ -10,12 +10,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import ReactLoading from 'react-loading';
 import { getAllTechnicians } from '../../redux/technicians/technician';
 
 const Home = () => {
   const [data, setData] = useState([]);
   const [, setSwiperRef] = useState(null);
+  const [done, setDone] = useState(undefined);
 
   const dispatch = useDispatch();
   const technicians = useSelector((state) => state.technicians);
@@ -27,45 +29,65 @@ const Home = () => {
   useEffect(() => {
     getAllData();
   }, []);
-  
   useEffect(() => {
     setData(technicians);
-  }, [technicians]);
+    if (data) {
+      setDone(true);
+    }
+  }, [data, technicians]);
 
   return (
     <>
-      <Swiper
-        onSwiper={setSwiperRef}
-        slidesPerView={2}
-        centeredSlides
-        spaceBetween={40}
-        navigation
-        modules={[Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {data.map((technician) => (
-          <SwiperSlide className="card-technician" key={technician.id}>
-            <div className="card-image">
-              <img src={technician.image} alt={technician.name} />
-            </div>
-            <div className="card-body">
-              <Link to={`/technician/${technician.id}`}>
-                <h2>{technician.name}</h2>
-              </Link>
-
-              <div>
-                <p className="location">
-                  <RoomOutlinedIcon />
-                  {technician.location}
-                </p>
-                <p>{technician.specialization}</p>
-                <a href="#button" className="button">Appointment</a>
+      {!done ? (
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          width: '100vw',
+        }}
+        >
+          <ReactLoading
+            type="balls"
+            color="#03fc4e"
+            height={300}
+            width={300}
+          />
+        </div>
+      ) : (
+        <Swiper
+          onSwiper={setSwiperRef}
+          slidesPerView={2}
+          centeredSlides
+          spaceBetween={40}
+          navigation
+          modules={[Pagination, Navigation]}
+          className="mySwiper"
+        >
+          {data.map((technician) => (
+            <SwiperSlide className="card-technician" key={technician.id}>
+              <div className="card-image">
+                <img src={technician.image} alt={technician.name} />
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
+              <div className="card-body">
+                <Link to={`/technician/${technician.id}`}>
+                  <h2>{technician.name}</h2>
+                </Link>
 
-      </Swiper>
+                <div>
+                  <p className="location">
+                    <RoomOutlinedIcon />
+                    {technician.location}
+                  </p>
+                  <p>{technician.specialization}</p>
+                  <a href="#button" className="button">Appointment</a>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+
+        </Swiper>
+      )}
     </>
   );
 };
