@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { addTechnician } from '../../redux/technicians/technician';
 import './technician.scss';
@@ -26,6 +27,16 @@ const AddTechnician = () => {
     setCharges('');
     setImage('');
     setSpecialization('');
+    toast('Technician successfully added!', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: 1,
+      theme: 'light',
+    });
   };
 
   return (
@@ -61,6 +72,7 @@ const AddTechnician = () => {
         onChange={(e) => setSpecialization(e.target.value)}
       />
       <button type="submit">Add Technician</button>
+      <ToastContainer />
     </form>
   );
 };

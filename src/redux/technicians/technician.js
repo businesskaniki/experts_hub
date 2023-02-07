@@ -52,6 +52,7 @@ export const addTechnician = createAsyncThunk(
   'ADD_TECHNICIAN',
   async (technician) => {
     const response = await axios.post(BASE_URL, technician);
+    console.log(response.data);
     return response.data;
   },
 );
