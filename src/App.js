@@ -68,7 +68,7 @@ function App() {
           element: <Resrvations />,
         },
         {
-          path: "add_reservations",
+          path: "add_reservations/:id",
           element: <AddReservation />,
         },
       ],

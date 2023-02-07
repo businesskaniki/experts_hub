@@ -1,9 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+localStorage.getItem("session")
 
 const GET_RESERVATIONS = 'reservations/GET_RESERVATIONS';
 const ADD_RESERVATIONS = 'reservations/ADD_RESERVATIONS';
+const BASE_URL = `http://127.0.0.1:3000/api/v1/technicians/${id}/appointments`;
 const initialState = [];
 
 export const fetchResevations = createAsyncThunk(GET_RESERVATIONS, async (id) => {
@@ -20,8 +22,8 @@ export const fetchResevations = createAsyncThunk(GET_RESERVATIONS, async (id) =>
 
 export const addreservation = createAsyncThunk(
   'ADD_RESERVATIONS',
-  async(technician_id)=>{
-    const response = await axios.post(BASE_URL, technician);
+  async()=>{
+    const response = await axios.post(BASE_URL);
     return response.data
   }
 );

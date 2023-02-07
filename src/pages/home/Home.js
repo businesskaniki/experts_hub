@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import {useEffect} from  'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTechnicians} from '../../redux/technicians/technician';
-import fetchResevations from '../../redux/reservations/reservations'
 import './home.scss';
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 //Try Slide
@@ -25,10 +24,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getAllTechnicians());
   }, [dispatch]);
-  
-  useEffect(() => {
-    dispatch(fetchResevations());
-  }, [dispatch]);
+
 
   return (
     <>
@@ -54,7 +50,9 @@ const Home = () => {
               <div>
                 <p className='location'><RoomOutlinedIcon />{technician.location}</p>
                 <p>{technician.specialization}</p>
-                <a className='button' onClick={() => }>Appointment</a>
+                <Link to={`add_reservations/${technician.id}`}>
+                   <a className='button'>Appointment</a>
+                </Link>
               </div>
             </div>
           </SwiperSlide>
