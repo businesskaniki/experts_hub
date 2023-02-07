@@ -1,0 +1,44 @@
+.card {
+  background-color: white;
+  width: 250px;
+  padding: 3%;
+  margin: 10px;
+  -webkit-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.card_title {
+  border-bottom: 1px solid black;
+  padding-bottom: 4px;}
+
+.card_title h5 {
+  font-size: larger;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.card_body {
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
+
+.card_body p {
+  color: gray;
+  font-weight: 300;
+  font-size: medium;
+}
+
+.card_footer {
+    padding-top: 4px;
+}
+
+.card_footer button {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: red;
+    padding: 4px;
+    color: white;
+}

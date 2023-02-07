@@ -11,6 +11,8 @@ import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import AddTechnician from "./pages/technician/technician";
 import TechnicianDetails from './pages/technician/TechnicianDetail'
+import Resrvations from './pages/reservation/Reservation'
+import AddReservation from "./pages/reservation/AddReservation";
 
 function App() {
 
@@ -60,6 +62,14 @@ function App() {
         {
           path: "/technician/:id",
           element: <TechnicianDetails />,
+        },
+        {
+          path: "reservations",
+          element: <Resrvations />,
+        },
+        {
+          path: "add_reservations",
+          element: <AddReservation />,
         },
       ],
     },

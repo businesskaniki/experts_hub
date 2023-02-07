@@ -27,7 +27,7 @@ const Leftbar = () => {
               <span>Technicians</span>
             </div>
           </Link>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="add_reservations" style={{ textDecoration: "none" }}>
             <div className="item">
               <img src={Person} alt="" />
               <span>Add Reservation</span>

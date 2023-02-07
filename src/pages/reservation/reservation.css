@@ -1,0 +1,12 @@
+.cont h2{
+   text-align: center;
+   padding-top: 30px;
+}
+
+.cont{
+   width: 100%;
+}
+
+.cards {
+   display: flex;
+}
