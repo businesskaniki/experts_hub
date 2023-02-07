@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   createBrowserRouter, Navigate, Outlet, RouterProvider,
 } from 'react-router-dom';
@@ -13,8 +14,6 @@ import AddTechnician from './pages/technician/technician';
 import TechnicianDetails from './pages/technician/TechnicianDetail';
 
 function App() {
-  const currentUser = localStorage.getItem('expert-current-user');
-
   const Layout = () => (
     <div>
       <Navbar />
@@ -27,6 +26,12 @@ function App() {
   );
 
   const ProtectedRoute = ({ children }) => {
+    const [currentUser, setCurrentUser] = useState(localStorage.getItem('expert-current-user'));
+
+    useEffect(() => {
+      setCurrentUser(localStorage.getItem('expert-current-user'));
+    }, []);
+
     if (!currentUser) {
       return <Navigate to="/login" />;
     }
