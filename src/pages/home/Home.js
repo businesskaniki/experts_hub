@@ -48,10 +48,10 @@ const Home = () => {
         }}
         >
           <ReactLoading
-            type="balls"
-            color="#03fc4e"
-            height={300}
-            width={300}
+            type="spokes"
+            color="#a51c30ff"
+            height={150}
+            width={150}
           />
         </div>
       ) : (
