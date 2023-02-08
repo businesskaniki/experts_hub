@@ -9,9 +9,6 @@ const reducerTechnician = (state = [], action) => {
     case 'GET_ALL_TECHNICIANS/fulfilled': {
       return [...state, ...action.payload];
     }
-    case 'ADD_TECHNICIAN/fulfilled': {
-      return [...state, action.payload];
-    }
 
     default: return state;
   }
