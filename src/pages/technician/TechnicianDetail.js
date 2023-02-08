@@ -13,8 +13,8 @@ const TechnicianDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getTechnicianDetail(id));
-  }, [dispatch, id]);
+    if (!technician.length) dispatch(getTechnicianDetail(id));
+  }, [dispatch, technician, id]);
 
   const handleDelete = () => {
     dispatch(deleteTechnician(id));
