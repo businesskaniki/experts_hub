@@ -1,3 +1,4 @@
+import { log } from 'console';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchResevations } from '../../redux/reservations/reservations';
@@ -6,6 +7,7 @@ import './card.css';
 const Card = () => {
   const dispatch = useDispatch();
   const reservations = useSelector((state) => state.reservations);
+  console.log(reservations);
   useEffect(() => {
     dispatch(fetchResevations());
   }, [dispatch]);
