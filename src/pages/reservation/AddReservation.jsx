@@ -4,6 +4,8 @@ import { addreservation } from '../../redux/reservations/reservations';
 
 const AddReservation = () => {
   const techId = window.location.pathname.split('/')[2];
+  const user = JSON.parse(localStorage.getItem('expert-current-user'));
+  const userId = user.id;
   const [date, setDate] = useState('');
   const [location, setLocation] = useState('');
   const dispatch = useDispatch();
@@ -13,7 +15,8 @@ const AddReservation = () => {
     const newReservation = {
       location,
       date,
-      techId,
+      technician_id: techId,
+      user_id: userId,
     };
     dispatch(addreservation(newReservation));
     setDate('');
