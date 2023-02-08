@@ -6,7 +6,6 @@ import './card.css';
 const Card = () => {
   const dispatch = useDispatch();
   const reservations = useSelector((state) => state.reservations);
-  console.log(reservations);
   useEffect(() => {
     dispatch(fetchResevations());
   }, [dispatch]);
