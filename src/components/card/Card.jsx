@@ -1,4 +1,3 @@
-import { log } from 'console';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchResevations } from '../../redux/reservations/reservations';
