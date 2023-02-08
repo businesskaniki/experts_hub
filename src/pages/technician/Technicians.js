@@ -40,7 +40,7 @@ const Home = () => {
           <CardActions>
             <RoomOutlinedIcon />
             {technician.location}
-            <Button size="small">
+            <Button size="small" className="btn-appointment">
               <Link to="/">
                 Appointement
               </Link>
