@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3000/api/v1/technicians';
+const BASE_URL = 'http://experthub-production.up.railway.app/api/v1/technicians';
 
 // Reducers
 const reducerTechnician = (state = [], action) => {
