@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import { getTechnicianDetail, deleteTechnician } from '../../redux/technicians/technician';
@@ -10,6 +10,7 @@ const TechnicianDetails = () => {
   const technician = useSelector((state) => state.technician);
   const param = useParams();
   const { id } = param;
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getTechnicianDetail(id));
@@ -17,6 +18,7 @@ const TechnicianDetails = () => {
 
   const handleDelete = () => {
     dispatch(deleteTechnician(id));
+    navigate('/');
   };
 
   return (

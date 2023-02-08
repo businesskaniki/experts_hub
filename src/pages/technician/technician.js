@@ -11,7 +11,7 @@ const AddTechnician = () => {
   const [image, setImage] = useState('');
   const [specialization, setSpecialization] = useState('');
   const dispatch = useDispatch();
-  const add = useSelector((state) => state.technicians);
+  const add = useSelector((state) => state.newTechnician);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -24,14 +24,12 @@ const AddTechnician = () => {
       specialization,
     };
     dispatch(addTechnician(newTechnician));
-    console.log(add.action);
-    setName('');
-    setLocation('');
-    setCharges('');
-    setImage('');
-    setSpecialization('');
-
     if (add.status === 'success') {
+      setName('');
+      setLocation('');
+      setCharges('');
+      setImage('');
+      setSpecialization('');
       navigate('/');
     }
   };

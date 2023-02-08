@@ -18,7 +18,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const technicians = useSelector((state) => state.technicians);
   useEffect(() => {
-    if (!technicians.length === 0) dispatch(getAllTechnicians());
+    if (technicians.length === 0) dispatch(getAllTechnicians());
   }, [dispatch, technicians]);
 
   return (
@@ -32,8 +32,8 @@ const Home = () => {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        {technicians.map((technician, index) =>(
-          <SwiperSlide className="card-technician" key={index}>
+        {technicians.map((technician) => (
+          <SwiperSlide className="card-technician" key={technician.id}>
             <div className="card-image">
               <img src={technician.image} alt={technician.name} />
             </div>

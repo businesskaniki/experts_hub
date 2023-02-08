@@ -3,20 +3,14 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000/api/v1/technicians';
 
+// Reducers
 const reducerTechnician = (state = [], action) => {
   switch (action.type) {
     case 'GET_ALL_TECHNICIANS/fulfilled': {
       return [...state, ...action.payload];
     }
-    case 'GET_TECHNICIAN_DETAILS/fulfilled': {
-      return { ...state, ...action.payload };
-    }
     case 'ADD_TECHNICIAN/fulfilled': {
       return [...state, action.payload];
-    }
-
-    case 'DELETE_TECHNICIAN/fulfilled': {
-      return state.filter((item) => item.id !== action.payload);
     }
 
     default: return state;
@@ -37,10 +31,14 @@ export const reducerSingleTechnician = (state = [], action) => {
     case 'GET_TECHNICIAN_DETAILS/fulfilled': {
       return { ...state, ...action.payload };
     }
+    case 'DELETE_TECHNICIAN/fulfilled': {
+      return state.filter((item) => item.id !== action.payload);
+    }
     default: return state;
   }
 };
 
+// Actions
 export const getAllTechnicians = createAsyncThunk(
   'GET_ALL_TECHNICIANS',
   async () => {
