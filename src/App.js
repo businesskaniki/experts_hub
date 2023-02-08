@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   createBrowserRouter, Navigate, Outlet, RouterProvider,
 } from 'react-router-dom';
@@ -15,8 +16,6 @@ import Resrvations from './pages/reservation/Reservation';
 import AddReservation from './pages/reservation/AddReservation';
 
 function App() {
-  const currentUser = true;
-
   const Layout = () => (
     <div>
       <Navbar />
@@ -29,6 +28,12 @@ function App() {
   );
 
   const ProtectedRoute = ({ children }) => {
+    const [currentUser, setCurrentUser] = useState(localStorage.getItem('expert-current-user'));
+
+    useEffect(() => {
+      setCurrentUser(localStorage.getItem('expert-current-user'));
+    }, []);
+
     if (!currentUser) {
       return <Navigate to="/login" />;
     }
