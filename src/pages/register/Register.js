@@ -1,15 +1,19 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./register.scss";
-import { registerUser } from "../../api/api";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './register.scss';
+import { toast } from 'react-toastify';
+import { registerUser } from '../../api/api';
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
+    name: '',
+    email: '',
+    password: '',
   });
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
+  const [theResponse, setTheResponse] = useState('');
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -20,11 +24,18 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage("");
+    setErrorMessage('');
+
     try {
-      let response;
-      response = await registerUser(formData);
-      console.log(response.data);
+      const response = await registerUser(formData);
+      setTheResponse(response.data.status);
+      setErrorMessage(response.data.status.errors);
+      if (theResponse.code === 200) {
+        toast('Account created successfully');
+        navigate('/login');
+      } else {
+        setErrorMessage(response.data.status.errors);
+      }
       // Handle successful response
     } catch (error) {
       setErrorMessage(error.message);
@@ -37,7 +48,6 @@ const Register = () => {
         <div className="right">
           <h1>Register</h1>
           <form onSubmit={handleSubmit}>
-            {errorMessage && <div>{errorMessage}</div>}
             <input
               type="text"
               name="name"
@@ -47,16 +57,32 @@ const Register = () => {
               onChange={handleChange}
             />
             <input
-              type="text"
+              type="email"
               name="email"
               id="email"
               placeholder="Email"
               value={formData.email}
               onChange={handleChange}
             />
-            <input type="text" name="password" id="password" placeholder="Password" value={formData.password}
-              onChange={handleChange} />
-            <input type="text" name="cpassword" id="cpassword" placeholder="Confirm Password" />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            {errorMessage && (
+              <div>
+                {errorMessage.map((each, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div key={index}>
+                    ⚠
+                    {each}
+                  </div>
+                ))}
+              </div>
+            )}
             <button type="submit">Register</button>
           </form>
         </div>
@@ -68,7 +94,7 @@ const Register = () => {
           </p>
           <span>Do you have an account?</span>
           <Link to="/login">
-            <button>Login</button>
+            <button type="button">Login</button>
           </Link>
         </div>
       </div>

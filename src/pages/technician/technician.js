@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTechnician } from '../../redux/technicians/technician';
-import './technician.scss'
+import './technician.scss';
 
 const AddTechnician = () => {
   const [name, setName] = useState('');
@@ -18,7 +18,7 @@ const AddTechnician = () => {
       location,
       charges,
       image,
-      specialization
+      specialization,
     };
     dispatch(addTechnician(newTechnician));
     setName('');

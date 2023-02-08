@@ -3,45 +3,46 @@ $space-cadet: #2b2d42ff;
 $crimson: #a51c30ff;
 $cardinal: rgb(234, 215, 217);
 $persian-green: #17a398ff;
-$white: #ffffffff;
+$white: #ffff;
 
 .leftbar {
-    position: sticky;
-    top: 60px;
-    border-right: 1px solid $crimson;
-    height: calc(100vh - 100px);
-    .container {
-        padding: 20px;
-        .menu {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            .user {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                img {
-                    height: 30px;
-                    width: 30px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                }
+  position: sticky;
+  top: 60px;
+  border-right: 1px solid $crimson;
+  height: calc(100vh - 100px);
 
-                span {}
-            }
-            .item {
-                display: flex;
-                align-items: center;
-                cursor: pointer;
+  .container {
+    padding: 20px;
 
-                img {
-                    width: 30px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                }
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
 
-                span {}
-            }
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        img {
+          height: 30px;
+          width: 30px;
+          border-radius: 50%;
+          object-fit: cover;
         }
+      }
+
+      .item {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        img {
+          width: 30px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
     }
+  }
 }
