@@ -11,13 +11,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import ReactLoading from 'react-loading';
 import { getAllTechnicians } from '../../redux/technicians/technician';
 
 const Home = () => {
-  const [data, setData] = useState([]);
   const [, setSwiperRef] = useState(null);
-  const [done, setDone] = useState(undefined);
 
   const dispatch = useDispatch();
   const technicians = useSelector((state) => state.technicians);
