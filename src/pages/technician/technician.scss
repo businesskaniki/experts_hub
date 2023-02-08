@@ -3,9 +3,11 @@ $crimson: #a51c30ff;
 $cardinal: rgb(234, 215, 217);
 $persian-green: #17a398ff;
 $white: #ffff;
+
 * {
   box-sizing: border-box;
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -39,9 +41,7 @@ form {
 .card-technician__details {
   display: flex;
   flex-direction: column;
-  align-items: space-around;
   padding: 4rem;
-  
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -49,7 +49,6 @@ form {
     max-width: 100%;
     width: 100%;
     height: 80vh;
-    max-width: 100%;
   }
 
   .card-technician__image {
@@ -103,8 +102,9 @@ form {
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   padding: 1rem;
+
   .btn-appointment {
     background: #039be5;
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
   }
 }
