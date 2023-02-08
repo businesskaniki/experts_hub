@@ -12,6 +12,8 @@ import Home from './pages/home/Home';
 import Profile from './pages/profile/Profile';
 import AddTechnician from './pages/technician/technician';
 import TechnicianDetails from './pages/technician/TechnicianDetail';
+import Reservations from './pages/reservation/Reservation';
+import AddReservation from './pages/reservation/AddReservation';
 
 function App() {
   const Layout = () => (
@@ -62,6 +64,14 @@ function App() {
         {
           path: '/technician/:id',
           element: <TechnicianDetails />,
+        },
+        {
+          path: 'reservations',
+          element: <Reservations />,
+        },
+        {
+          path: 'add_reservations/:id',
+          element: <AddReservation />,
         },
       ],
     },

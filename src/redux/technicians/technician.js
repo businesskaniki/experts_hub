@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3000/api/v1/technicians';
+const BASE_URL = 'https://experthub-production.up.railway.app/api/v1/technicians';
 
 const reducerTechnician = (state = [], action) => {
   switch (action.type) {
@@ -19,7 +19,8 @@ const reducerTechnician = (state = [], action) => {
       return state.filter((item) => item.id !== action.payload);
     }
 
-    default: return state;
+    default:
+      return state;
   }
 };
 
@@ -28,40 +29,29 @@ export const reducerSingleTechnician = (state = [], action) => {
     case 'GET_TECHNICIAN_DETAILS/fulfilled': {
       return { ...state, ...action.payload };
     }
-    default: return state;
+    default:
+      return state;
   }
 };
 
-export const getAllTechnicians = createAsyncThunk(
-  'GET_ALL_TECHNICIANS',
-  async () => {
-    const response = await axios.get(BASE_URL);
-    return response.data;
-  },
-);
+export const getAllTechnicians = createAsyncThunk('GET_ALL_TECHNICIANS', async () => {
+  const response = await axios.get(BASE_URL);
+  return response.data;
+});
 
-export const getTechnicianDetail = createAsyncThunk(
-  'GET_TECHNICIAN_DETAILS',
-  async (id) => {
-    const response = await axios.get(`${BASE_URL}/${id}`);
-    return response.data;
-  },
-);
+export const getTechnicianDetail = createAsyncThunk('GET_TECHNICIAN_DETAILS', async (id) => {
+  const response = await axios.get(`${BASE_URL}/${id}`);
+  return response.data;
+});
 
-export const addTechnician = createAsyncThunk(
-  'ADD_TECHNICIAN',
-  async (technician) => {
-    const response = await axios.post(BASE_URL, technician);
-    return response.data;
-  },
-);
+export const addTechnician = createAsyncThunk('ADD_TECHNICIAN', async (technician) => {
+  const response = await axios.post(BASE_URL, technician);
+  return response.data;
+});
 
-export const deleteTechnician = createAsyncThunk(
-  'DELETE_TECHNICIAN',
-  async (id) => {
-    const response = await axios.delete(`${BASE_URL}/${id}`);
-    return response.data;
-  },
-);
+export const deleteTechnician = createAsyncThunk('DELETE_TECHNICIAN', async (id) => {
+  const response = await axios.delete(`${BASE_URL}/${id}`);
+  return response.data;
+});
 
 export default reducerTechnician;
