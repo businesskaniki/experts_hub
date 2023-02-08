@@ -33,7 +33,7 @@ const AddTechnician = () => {
       setSpecialization('');
       navigate('/');
     } else {
-      toast('You should fill all fields');
+      toast('An External Error occur when trying to create an technician');
     }
   };
 
