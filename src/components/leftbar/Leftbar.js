@@ -26,12 +26,6 @@ const Leftbar = () => (
             <span>Technicians</span>
           </div>
         </Link>
-        <Link to="/" style={{ textDecoration: 'none' }}>
-          <div className="item">
-            <img src={Person} alt="" />
-            <span>Add Reservation</span>
-          </div>
-        </Link>
         <Link to="/reservations" style={{ textDecoration: 'none' }}>
           <div className="item">
             <img src={Person} alt="" />

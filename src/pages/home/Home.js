@@ -21,7 +21,6 @@ const Home = () => {
     dispatch(getAllTechnicians());
   }, [dispatch]);
 
-
   return (
     <>
       <Swiper
@@ -50,7 +49,7 @@ const Home = () => {
                 </p>
                 <p>{technician.specialization}</p>
                 <Link to={`add_reservations/${technician.id}`}>
-                   <a className='button'>Appointment</a>
+                  <button type="button" className="button">Appointment</button>
                 </Link>
               </div>
             </div>

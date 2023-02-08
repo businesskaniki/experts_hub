@@ -7,12 +7,12 @@ import Footer from './components/footer/Footer';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 
-import Home from "./pages/home/Home";
-import Profile from "./pages/profile/Profile";
-import AddTechnician from "./pages/technician/technician";
-import TechnicianDetails from './pages/technician/TechnicianDetail'
-import Resrvations from './pages/reservation/Reservation'
-import AddReservation from "./pages/reservation/AddReservation";
+import Home from './pages/home/Home';
+import Profile from './pages/profile/Profile';
+import AddTechnician from './pages/technician/technician';
+import TechnicianDetails from './pages/technician/TechnicianDetail';
+import Resrvations from './pages/reservation/Reservation';
+import AddReservation from './pages/reservation/AddReservation';
 
 function App() {
   const currentUser = true;
@@ -61,11 +61,11 @@ function App() {
           element: <TechnicianDetails />,
         },
         {
-          path: "reservations",
+          path: 'reservations',
           element: <Resrvations />,
         },
         {
-          path: "add_reservations/:id",
+          path: 'add_reservations/:id',
           element: <AddReservation />,
         },
       ],
