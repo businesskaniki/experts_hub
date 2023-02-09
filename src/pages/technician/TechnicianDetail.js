@@ -7,11 +7,9 @@ import { getTechnicianDetail, deleteTechnician } from '../../redux/technicians/t
 
 const TechnicianDetails = () => {
   const dispatch = useDispatch();
-  // const technician = useSelector((state) => state.technician);
   const param = useParams();
   const { id } = param;
   const navigate = useNavigate();
-  // console.log(technician);
   const [tech, setTechnician] = useState([]);
 
   useEffect(() => {
