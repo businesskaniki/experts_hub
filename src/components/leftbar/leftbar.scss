@@ -46,3 +46,35 @@ $white: #ffff;
     }
   }
 }
+@media only screen and (max-width: 767px) {
+  .leftbar {
+    flex-direction: column;
+    display: none;
+  }
+  .menu {
+    display: none;
+  }
+
+  .leftbar .user {
+    margin-bottom: 1rem;
+  }
+
+  .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f2f2f2;
+    margin-bottom: 1rem;
+  }
+
+  .item img {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+  }
+
+  .item span {
+    font-size: 1.5rem;
+  }
+}
