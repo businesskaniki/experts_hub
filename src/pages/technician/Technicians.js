@@ -42,7 +42,7 @@ const Home = () => {
             {technician.location}
             <Button size="small" className="btn-appointment">
               <Link to="/">
-                Appointement
+                Appointment
               </Link>
             </Button>
           </CardActions>
