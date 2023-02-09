@@ -15,8 +15,6 @@ const AddReservation = () => {
   const techId = window.location.pathname.split('/')[2];
   const user = JSON.parse(localStorage.getItem('expert-current-user'));
   const userID = user.id;
-  console.log(userID);
-  console.log('techId', techId);
   const handleSubmit = (e) => {
     e.preventDefault();
 

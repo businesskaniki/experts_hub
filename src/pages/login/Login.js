@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import './login.scss';
 import { loginUser } from '../../api/api';
 
@@ -31,7 +32,7 @@ const Login = () => {
         setError(response.data.error);
       }
     } catch (error) {
-      setError('An error occurred while trying to log in.');
+      toast.error('An error occurred while trying to log in.');
     }
   };
 

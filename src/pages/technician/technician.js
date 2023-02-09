@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addTechnician } from '../../redux/technicians/technician';
 import './technician.scss';
 
@@ -11,7 +12,8 @@ const AddTechnician = () => {
   const [image, setImage] = useState('');
   const [specialization, setSpecialization] = useState('');
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  const add = useSelector((state) => state.newTechnician);
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTechnician = {
@@ -22,22 +24,40 @@ const AddTechnician = () => {
       specialization,
     };
     dispatch(addTechnician(newTechnician));
-    setName('');
-    setLocation('');
-    setCharges('');
-    setImage('');
-    setSpecialization('');
-    toast('Technician successfully added!', {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: 1,
-      theme: 'light',
-    });
+    if (add.status === 'success') {
+      setName('');
+      setLocation('');
+      setCharges('');
+      setImage('');
+      setSpecialization('');
+      toast('Technician successfully added!', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: 1,
+        theme: 'light',
+      });
+      navigate('/');
+    } else {
+      toast('An External Error occur when trying to create an technician');
+    }
   };
+  console.log(add);
+  // useEffect(() => {
+  //   if (add.status === 'success') {
+  //     setName('');
+  //     setLocation('');
+  //     setCharges('');
+  //     setImage('');
+  //     setSpecialization('');
+  //     navigate('/');
+  //   } else {
+  //     toast('An External Error occur when trying to create an technician');
+  //   }
+  // }, [add, navigate]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -72,7 +92,6 @@ const AddTechnician = () => {
         onChange={(e) => setSpecialization(e.target.value)}
       />
       <button type="submit">Add Technician</button>
-      <ToastContainer />
     </form>
   );
 };

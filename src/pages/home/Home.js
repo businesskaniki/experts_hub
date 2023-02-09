@@ -10,49 +10,45 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import ReactLoading from 'react-loading';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { getAllTechnicians } from '../../redux/technicians/technician';
 
 const Home = () => {
-  const [data, setData] = useState([]);
   const [, setSwiperRef] = useState(null);
   const [done, setDone] = useState(undefined);
+  const [tech, setTech] = useState([]);
 
   const dispatch = useDispatch();
   const technicians = useSelector((state) => state.technicians);
-
-  const getAllData = async () => {
-    dispatch(getAllTechnicians());
-  };
+  useEffect(() => {
+    if (!technicians.length) {
+      dispatch(getAllTechnicians());
+    }
+  }, [dispatch, technicians]);
+  useEffect(() => {
+    setTech(technicians);
+  }, [technicians]);
 
   useEffect(() => {
-    getAllData();
-  }, []);
-  useEffect(() => {
-    setData(technicians);
-    if (data) {
+    if (tech) {
       setDone(true);
     }
-  }, [data, technicians]);
+  }, [tech, technicians]);
 
   return (
     <>
       {!done ? (
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-          width: '100vw',
-        }}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh',
+            width: '100vw',
+          }}
         >
-          <ReactLoading
-            type="spokes"
-            color="#a51c30ff"
-            height={150}
-            width={150}
-          />
+          <ReactLoading type="spokes" color="#a51c30ff" height={150} width={150} />
         </div>
       ) : (
         <Swiper
@@ -64,7 +60,7 @@ const Home = () => {
           modules={[Pagination, Navigation]}
           className="mySwiper"
         >
-          {data.map((technician) => (
+          {tech.map((technician) => (
             <SwiperSlide className="card-technician" key={technician.id}>
               <div className="card-image">
                 <img src={technician.image} alt={technician.name} />
@@ -73,7 +69,6 @@ const Home = () => {
                 <Link to={`/technician/${technician.id}`}>
                   <h2>{technician.name}</h2>
                 </Link>
-
                 <div>
                   <p className="location">
                     <RoomOutlinedIcon />
@@ -81,13 +76,14 @@ const Home = () => {
                   </p>
                   <p>{technician.specialization}</p>
                   <Link to={`add_reservations/${technician.id}`}>
-                    <button type="button" className="button">Appointment</button>
+                    <button type="button" className="button">
+                      Appointment
+                    </button>
                   </Link>
                 </div>
               </div>
             </SwiperSlide>
           ))}
-
         </Swiper>
       )}
     </>

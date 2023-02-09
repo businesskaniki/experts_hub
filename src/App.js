@@ -7,12 +7,13 @@ import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
-
 import Home from './pages/home/Home';
 import Profile from './pages/profile/Profile';
+
 import AddTechnician from './pages/technician/technician';
 import TechnicianDetails from './pages/technician/TechnicianDetail';
 import Reservations from './pages/reservation/Reservation';
+import Technicians from './pages/technician/Technicians';
 import AddReservation from './pages/reservation/AddReservation';
 
 function App() {
@@ -60,6 +61,10 @@ function App() {
         {
           path: '/technician',
           element: <AddTechnician />,
+        },
+        {
+          path: '/technicians',
+          element: <Technicians />,
         },
         {
           path: '/technician/:id',
