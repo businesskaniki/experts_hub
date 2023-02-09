@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
@@ -7,43 +7,48 @@ import { getTechnicianDetail, deleteTechnician } from '../../redux/technicians/t
 
 const TechnicianDetails = () => {
   const dispatch = useDispatch();
-  const technician = useSelector((state) => state.technician);
+  // const technician = useSelector((state) => state.technician);
   const param = useParams();
   const { id } = param;
   const navigate = useNavigate();
+  // console.log(technician);
+  const [tech, setTechnician] = useState([]);
 
   useEffect(() => {
-    if (!technician.length) dispatch(getTechnicianDetail(id));
-  }, [dispatch, technician, id]);
+    const fetchData = async () => {
+      const data = await dispatch(getTechnicianDetail(id));
+      setTechnician(data.payload);
+    };
+    fetchData();
+  }, [dispatch, id]);
 
   const handleDelete = () => {
     dispatch(deleteTechnician(id));
     navigate('/');
   };
-
   return (
     <div className="card-technician__details">
       <div className="card-technician__image">
-        <img src={technician.image} alt="" />
+        <img src={tech.image} alt="" />
       </div>
       <div className="card-content">
-        <h2>{technician.name}</h2>
+        <h2>{tech.name}</h2>
         <p>
           <span>Charges per Hours: </span>
           <span>
             $
-            {technician.charges}
+            {tech.charges}
           </span>
         </p>
         <p>
           <span>Specialization: </span>
-          <span>{technician.specialization}</span>
+          <span>{tech.specialization}</span>
         </p>
         <p className="">
           <RoomOutlinedIcon />
-          {technician.location}
+          {tech.location}
         </p>
-        <button type="button" aria-label="Save" id={technician.id} onClick={handleDelete}><DeleteForeverRoundedIcon /></button>
+        <button type="button" aria-label="Save" id={tech.id} onClick={handleDelete}><DeleteForeverRoundedIcon /></button>
       </div>
     </div>
   );

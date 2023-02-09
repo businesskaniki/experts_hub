@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const BASE_URL = 'https://experthub-production.up.railway.app/api/v1/technicians';
+axios.defaults.baseURL = 'https://experthub-production.up.railway.app/';
 
 // Reducers
 const reducerTechnician = (state = [], action) => {
@@ -23,7 +23,7 @@ export const reducerAddTechnician = (state = {}, action) => {
   }
 };
 
-export const reducerSingleTechnician = (state = [], action) => {
+export const reducerSingleTechnician = (state = {}, action) => {
   switch (action.type) {
     case 'GET_TECHNICIAN_DETAILS/fulfilled': {
       return { ...state, ...action.payload };
@@ -39,7 +39,7 @@ export const reducerSingleTechnician = (state = [], action) => {
 export const getAllTechnicians = createAsyncThunk(
   'GET_ALL_TECHNICIANS',
   async () => {
-    const response = await axios.get(BASE_URL);
+    const response = await axios.get('api/v1/technicians');
     return response.data;
   },
 );
@@ -47,7 +47,7 @@ export const getAllTechnicians = createAsyncThunk(
 export const getTechnicianDetail = createAsyncThunk(
   'GET_TECHNICIAN_DETAILS',
   async (id) => {
-    const response = await axios.get(`${BASE_URL}/${id}`);
+    const response = await axios.get(`api/v1/technicians/${id}`);
     return response.data;
   },
 );
@@ -55,16 +55,16 @@ export const getTechnicianDetail = createAsyncThunk(
 export const addTechnician = createAsyncThunk(
   'ADD_TECHNICIAN',
   async (technician) => {
-    const response = await axios.post(BASE_URL, technician);
-    return response.data;
+    await axios.post('api/v1/technicians', technician);
+    return getAllTechnicians();
   },
 );
 
 export const deleteTechnician = createAsyncThunk(
   'DELETE_TECHNICIAN',
   async (id) => {
-    const response = await axios.delete(`${BASE_URL}/${id}`);
-    return response.data;
+    await axios.delete(`api/v1/technicians/${id}`);
+    return getAllTechnicians();
   },
 );
 

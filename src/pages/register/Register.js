@@ -31,7 +31,7 @@ const Register = () => {
       setTheResponse(response.data.status);
       setErrorMessage(response.data.status.errors);
       if (theResponse.code === 200) {
-        toast('Account created successfully');
+        toast.success('Account created successfully');
         navigate('/login');
       } else {
         setErrorMessage(response.data.status.errors);
@@ -41,7 +41,6 @@ const Register = () => {
       setErrorMessage(error.message);
     }
   };
-
   return (
     <div className="register">
       <div className="card">

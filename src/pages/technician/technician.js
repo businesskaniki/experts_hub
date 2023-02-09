@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -14,7 +14,6 @@ const AddTechnician = () => {
   const dispatch = useDispatch();
   const add = useSelector((state) => state.newTechnician);
   const navigate = useNavigate();
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTechnician = {
@@ -25,6 +24,8 @@ const AddTechnician = () => {
       specialization,
     };
     dispatch(addTechnician(newTechnician));
+  };
+  useEffect(() => {
     if (add.status === 'success') {
       setName('');
       setLocation('');
@@ -35,7 +36,7 @@ const AddTechnician = () => {
     } else {
       toast('An External Error occur when trying to create an technician');
     }
-  };
+  }, [add, navigate]);
 
   return (
     <>
