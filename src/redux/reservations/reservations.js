@@ -32,8 +32,16 @@ export const reducerSingleReservation = (state = [], action) => {
   }
 };
 
-export const getAllReservations = createAsyncThunk('GET_ALL_RESERVATIONS', async (userId) => {
-  const response = await axios.get(`https://experthub-production.up.railway.app/api/v1/users/${userId}/appointments`);
+export const getAllReservations = createAsyncThunk('GET_ALL_RESERVATIONS', async () => {
+  const user = JSON.parse(localStorage.getItem('expert-current-user'));
+  const token = localStorage.getItem('expert-token');
+  const userId = user.id;
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(`https://experthub-production.up.railway.app/api/v1/users/${userId}/appointments`, config);
   return response.data;
 });
 

@@ -5,7 +5,7 @@ import { getAllReservations } from '../../redux/reservations/reservations';
 const Reservation = ({ userId }) => {
   const dispatch = useDispatch();
 
-  const reservations = useSelector((state) => state.reservation.reservations);
+  const reservations = useSelector((state) => state.reservations);
 
   useEffect(() => {
     dispatch(getAllReservations(userId));

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addReservation } from '../../redux/reservations/reservations';
 import '../technician/technician.scss';
@@ -8,6 +10,7 @@ const AddReservation = () => {
   const [location, setLocation] = useState('');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const techId = window.location.pathname.split('/')[2];
   const user = JSON.parse(localStorage.getItem('expert-current-user'));
@@ -27,6 +30,8 @@ const AddReservation = () => {
     dispatch(addReservation(payload));
     setDate('');
     setLocation('');
+    toast('Reservation created successfully');
+    navigate('/reservations');
   };
 
   return (
