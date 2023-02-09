@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addTechnician } from '../../redux/technicians/technician';
 import './technician.scss';
@@ -13,7 +13,7 @@ const AddTechnician = () => {
   const [specialization, setSpecialization] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const add = useSelector((state) => state.newTechnician);
+  // const add = useSelector((state) => state.newTechnician);
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTechnician = {
@@ -24,28 +24,27 @@ const AddTechnician = () => {
       specialization,
     };
     dispatch(addTechnician(newTechnician));
-    if (add.status === 'success') {
-      setName('');
-      setLocation('');
-      setCharges('');
-      setImage('');
-      setSpecialization('');
-      toast('Technician successfully added!', {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: 1,
-        theme: 'light',
-      });
-      navigate('/');
-    } else {
-      toast('An External Error occur when trying to create an technician');
-    }
+    // if (add.status === 'success') {
+    setName('');
+    setLocation('');
+    setCharges('');
+    setImage('');
+    setSpecialization('');
+    toast('Technician successfully added!', {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: 1,
+      theme: 'light',
+    });
+    navigate('/');
+    // } else {
+    //   toast('An External Error occur when trying to create an technician');
+    // }
   };
-  console.log(add);
   // useEffect(() => {
   //   if (add.status === 'success') {
   //     setName('');

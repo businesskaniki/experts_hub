@@ -11,7 +11,6 @@ const Reservation = ({ userId }) => {
     dispatch(getAllReservations(userId));
   }, [dispatch, userId]);
 
-  console.log(reservations);
   return (
     <ul>
       {reservations?.map((reservation) => (
