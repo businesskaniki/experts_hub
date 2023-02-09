@@ -80,7 +80,9 @@ const Home = () => {
                     {technician.location}
                   </p>
                   <p>{technician.specialization}</p>
-                  <a href="#button" className="button">Appointment</a>
+                  <Link to={`add_reservations/${technician.id}`}>
+                    <button type="button" className="button">Appointment</button>
+                  </Link>
                 </div>
               </div>
             </SwiperSlide>
