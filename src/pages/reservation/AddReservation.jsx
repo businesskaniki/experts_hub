@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addreservation } from '../../redux/reservations/reservations';
+import { addReservation } from '../../redux/reservations/reservations';
 
 const AddReservation = () => {
   const techId = window.location.pathname.split('/')[2];
@@ -18,7 +18,7 @@ const AddReservation = () => {
       technician_id: techId,
       user_id: userId,
     };
-    dispatch(addreservation(newReservation));
+    dispatch(addReservation(newReservation));
     setDate('');
     setLocation('');
   };
@@ -31,11 +31,7 @@ const AddReservation = () => {
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         />
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
+        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
         <button type="submit">Add</button>
       </form>
     </div>

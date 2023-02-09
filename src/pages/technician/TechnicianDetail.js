@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import ReactLoading from 'react-loading';
 import { getTechnicianDetail, deleteTechnician } from '../../redux/technicians/technician';
 
 const TechnicianDetails = () => {
@@ -27,7 +28,21 @@ const TechnicianDetails = () => {
   return (
     <div className="card-technician__details">
       <div className="card-technician__image">
-        <img src={tech.image} alt="" />
+        {!tech.image ? (
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '100vh',
+              width: '60vw',
+            }}
+          >
+            <ReactLoading type="spokes" color="#a51c30ff" height={150} width={150} />
+          </div>
+        ) : (
+          <img src={tech.image} alt="" />
+        )}
       </div>
       <div className="card-content">
         <h2>{tech.name}</h2>
@@ -46,7 +61,14 @@ const TechnicianDetails = () => {
           <RoomOutlinedIcon />
           {tech.location}
         </p>
-        <button type="button" aria-label="Save" id={tech.id} onClick={handleDelete}><DeleteForeverRoundedIcon /></button>
+        <div className="detailBtn">
+          <button type="button" aria-label="Save" id={tech.id} onClick={handleDelete}>
+            <DeleteForeverRoundedIcon />
+          </button>
+          <Link to="/">
+            <button type="button">Back</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

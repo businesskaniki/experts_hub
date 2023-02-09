@@ -1,16 +1,28 @@
-import React from 'react';
-import Card from '../../components/card/Card';
-import './reservation.css';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllReservations } from '../../redux/reservations/reservations';
 
-const Reservation = () => {
-  const title = 'My reservations';
+const Reservation = ({ userId }) => {
+  const dispatch = useDispatch();
+
+  const reservations = useSelector((state) => state.reservations);
+
+  useEffect(() => {
+    dispatch(getAllReservations(userId));
+  }, [dispatch, userId]);
+
   return (
-    <div className="cont">
-      <h2>{title}</h2>
-      <div className="cards">
-        <Card />
-      </div>
-    </div>
+    <ul>
+      {reservations?.map((reservation) => (
+        <li key={reservation.id}>
+          {reservation.name}
+          {' '}
+          -
+          {' '}
+          {reservation.location}
+        </li>
+      ))}
+    </ul>
   );
 };
 
