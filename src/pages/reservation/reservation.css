@@ -10,3 +10,17 @@
 .cards {
   display: flex;
 }
+
+.reserve-cont {
+  margin-left: 30px;
+  margin-bottom: 40px;
+}
+
+.reserve-cont:first-child {
+  margin-top: 20px;
+}
+
+.reserve-name {
+  text-align: center;
+  font-weight: bold !important;
+}
