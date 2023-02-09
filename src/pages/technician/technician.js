@@ -13,7 +13,6 @@ const AddTechnician = () => {
   const [specialization, setSpecialization] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const add = useSelector((state) => state.newTechnician);
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTechnician = {
@@ -24,7 +23,6 @@ const AddTechnician = () => {
       specialization,
     };
     dispatch(addTechnician(newTechnician));
-    // if (add.status === 'success') {
     setName('');
     setLocation('');
     setCharges('');
@@ -41,22 +39,7 @@ const AddTechnician = () => {
       theme: 'light',
     });
     navigate('/');
-    // } else {
-    //   toast('An External Error occur when trying to create an technician');
-    // }
   };
-  // useEffect(() => {
-  //   if (add.status === 'success') {
-  //     setName('');
-  //     setLocation('');
-  //     setCharges('');
-  //     setImage('');
-  //     setSpecialization('');
-  //     navigate('/');
-  //   } else {
-  //     toast('An External Error occur when trying to create an technician');
-  //   }
-  // }, [add, navigate]);
 
   return (
     <form onSubmit={handleSubmit}>

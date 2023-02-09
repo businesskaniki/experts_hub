@@ -45,7 +45,7 @@ const AddReservation = () => {
         value={location}
         onChange={(e) => setLocation(e.target.value)}
       />
-      <button type="submit">Add Technician</button>
+      <button type="submit">Add Reservation</button>
     </form>
   );
 };
