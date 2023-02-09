@@ -18,9 +18,7 @@ const Reservation = ({ userId }) => {
     if (!reservations.length) {
       dispatch(getAllReservations(userId));
     }
-  }, [dispatch, userId]);
-
-  console.log(reservations);
+  }, [dispatch, reservations.length, userId]);
 
   return (
     <section>
