@@ -21,7 +21,13 @@ const Home = () => {
   return (
     <section className="card-technicians">
       {technicians.map((technician) => (
-        <Card sx={{ maxWidth: 400, height: 340 }} key={technician.id}>
+        <Card sx={{ maxWidth: 400, height: 400 }} key={technician.id}>
+
+          <Typography variant="body2" color="text.secondary">
+            <Link to={`/technician/${technician.id}`}>
+              {technician.name}
+            </Link>
+          </Typography>
           <CardMedia
             sx={{ height: 200 }}
             image={technician.image}
@@ -29,9 +35,14 @@ const Home = () => {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              <Link to={`/technician/${technician.id}`}>
-                {technician.name}
-              </Link>
+              <Button size="small" className="btn-appointment">
+                <Link to={`/add_reservations/${technician.id}`}>
+                  Book
+                  {' '}
+                  {technician.name}
+                </Link>
+              </Button>
+
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {technician.specialization}
@@ -40,11 +51,6 @@ const Home = () => {
           <CardActions>
             <RoomOutlinedIcon />
             {technician.location}
-            <Button size="small" className="btn-appointment">
-              <Link to="/">
-                Appointment
-              </Link>
-            </Button>
           </CardActions>
         </Card>
       ))}

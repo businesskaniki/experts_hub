@@ -27,7 +27,6 @@ const Register = () => {
 
     try {
       const response = await registerUser(formData);
-      console.log(response);
       if (response.data.status.code === 200) {
         toast.success('Account created successfully');
         navigate('/login');
