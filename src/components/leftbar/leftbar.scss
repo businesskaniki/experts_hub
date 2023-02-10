@@ -14,6 +14,7 @@ $white: #ffff;
   .container {
     padding: 20px;
     height: 80vh;
+
     .menu {
       display: flex;
       flex-direction: column;
@@ -21,11 +22,13 @@ $white: #ffff;
       align-items: center;
       justify-content: space-between;
       height: 100%;
+
       .links {
         display: flex;
         align-items: start;
         gap: 10px;
         flex-direction: column;
+
         .logout {
           padding: 10px;
           background-color: red;
@@ -36,6 +39,7 @@ $white: #ffff;
           width: 100%;
         }
       }
+
       .user {
         display: flex;
         align-items: center;
@@ -62,18 +66,18 @@ $white: #ffff;
           object-fit: cover;
         }
       }
+
+      .icons {
+        display: flex;
+        gap: 5px;
+        justify-content: space-evenly;
+        align-items: center;
+
+        img {
+          width: 25px;
+        }
+      }
     }
-  }
-}
-
-.icons {
-  display: flex;
-  gap: 5px;
-  justify-content: space-evenly;
-  align-items: center;
-
-  img {
-    width: 25px;
   }
 }
 
