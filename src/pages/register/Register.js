@@ -11,7 +11,6 @@ const Register = () => {
     password: '',
   });
   const [errorMessage, setErrorMessage] = useState('');
-  const [theResponse, setTheResponse] = useState('');
 
   const navigate = useNavigate();
 
@@ -28,17 +27,33 @@ const Register = () => {
 
     try {
       const response = await registerUser(formData);
-      setTheResponse(response.data.status);
-      setErrorMessage(response.data.status.errors);
-      if (theResponse.code === 200) {
+      console.log(response);
+      if (response.data.status.code === 200) {
         toast.success('Account created successfully');
         navigate('/login');
+      } else if (Array.isArray(response.data.status.error)) {
+        setErrorMessage(response.data.status.error.map((error) => (
+          <div key={error}>
+            ⚠
+            {error}
+          </div>
+        )));
       } else {
-        setErrorMessage(response.data.status.errors);
+        setErrorMessage(
+          <div>
+            ⚠
+            {response.data.status.error}
+          </div>,
+        );
       }
-      // Handle successful response
     } catch (error) {
-      setErrorMessage(error.message);
+      setErrorMessage(
+        <div>
+          ⚠
+          {' '}
+          {error.message}
+        </div>,
+      );
     }
   };
   return (
