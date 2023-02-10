@@ -51,42 +51,47 @@ const Home = () => {
           <ReactLoading type="spokes" color="#a51c30ff" height={150} width={150} />
         </div>
       ) : (
-        <Swiper
-          onSwiper={setSwiperRef}
-          slidesPerView={2}
-          centeredSlides
-          spaceBetween={40}
-          navigation
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
-        >
-          {tech.map((technician) => (
-            <SwiperSlide className="card-technician" key={technician.id}>
-              <div className="card-image">
-                <img src={technician.image} alt={technician.name} />
-              </div>
-              <div className="card-body">
-                <Link to={`/technician/${technician.id}`}>
-                  <h2>{technician.name}</h2>
-                </Link>
-                <div>
-                  <p className="location">
-                    <RoomOutlinedIcon />
-                    {technician.location}
-                  </p>
-                  <p>{technician.specialization}</p>
-                  <Link to={`add_reservations/${technician.id}`}>
-                    <button type="button" className="button">
-                      Book
-                      {' '}
-                      {technician.name}
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <div className="home-cont">
+          <h2>The Experts</h2>
+          <div>
+            <Swiper
+              onSwiper={setSwiperRef}
+              slidesPerView={2}
+              centeredSlides
+              spaceBetween={40}
+              navigation
+              modules={[Pagination, Navigation]}
+              className="mySwiper"
+            >
+              {tech.map((technician) => (
+                <SwiperSlide className="card-technician" key={technician.id}>
+                  <div className="card-image">
+                    <img src={technician.image} alt={technician.name} />
+                  </div>
+                  <div className="card-body">
+                    <Link to={`/technician/${technician.id}`}>
+                      <h2>{technician.name}</h2>
+                    </Link>
+                    <div>
+                      <p className="location">
+                        <RoomOutlinedIcon />
+                        {technician.location}
+                      </p>
+                      <p>{technician.specialization}</p>
+                      <Link to={`add_reservations/${technician.id}`}>
+                        <button type="button" className="button">
+                          Book
+                          {' '}
+                          {technician.name}
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
       )}
     </>
   );
