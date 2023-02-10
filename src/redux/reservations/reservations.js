@@ -61,16 +61,30 @@ export const getReservationDetail = createAsyncThunk(
 export const addReservation = createAsyncThunk('ADD_RESERVATION', async (data) => {
   const user = JSON.parse(localStorage.getItem('expert-current-user'));
   const userId = user.id;
+  const token = localStorage.getItem('expert-token');
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
   const response = await axios.post(
     `https://experthub-production.up.railway.app/api/v1/users/${userId}/appointments`,
-    data,
+    data, config,
   );
   return response.data;
 });
 
-export const deleteReservation = createAsyncThunk('DELETE_RESERVATION', async (userId, id) => {
+export const deleteReservation = createAsyncThunk('DELETE_RESERVATION', async (id) => {
+  const user = JSON.parse(localStorage.getItem('expert-current-user'));
+  const userId = user.id;
+  const token = localStorage.getItem('expert-token');
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
   const response = await axios.delete(
-    `https://experthub-production.up.railway.app/api/v1/users/${userId}/appointments/${id}`,
+    `https://experthub-production.up.railway.app/api/v1/users/${userId}/appointments/${id}`, config,
   );
   return response.data;
 });

@@ -77,7 +77,9 @@ const Home = () => {
                   <p>{technician.specialization}</p>
                   <Link to={`add_reservations/${technician.id}`}>
                     <button type="button" className="button">
-                      Appointment
+                      Book
+                      {' '}
+                      {technician.name}
                     </button>
                   </Link>
                 </div>

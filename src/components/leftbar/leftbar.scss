@@ -13,11 +13,32 @@ $white: #ffff;
 
   .container {
     padding: 20px;
+    height: 80vh;
 
     .menu {
       display: flex;
       flex-direction: column;
       gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+
+      .links {
+        display: flex;
+        align-items: start;
+        gap: 10px;
+        flex-direction: column;
+
+        .logout {
+          padding: 10px;
+          background-color: red;
+          outline: none;
+          border: none;
+          margin-top: 5px;
+          cursor: pointer;
+          width: 100%;
+        }
+      }
 
       .user {
         display: flex;
@@ -35,12 +56,25 @@ $white: #ffff;
       .item {
         display: flex;
         align-items: center;
+        justify-content: center;
         cursor: pointer;
+        gap: 10px;
 
         img {
           width: 30px;
           border-radius: 50%;
           object-fit: cover;
+        }
+      }
+
+      .icons {
+        display: flex;
+        gap: 5px;
+        justify-content: space-evenly;
+        align-items: center;
+
+        img {
+          width: 25px;
         }
       }
     }

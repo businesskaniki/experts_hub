@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import ReactLoading from 'react-loading';
@@ -23,7 +23,11 @@ const TechnicianDetails = () => {
 
   const handleDelete = () => {
     dispatch(deleteTechnician(id));
-    navigate('/');
+    navigate(-1);
+  };
+
+  const handleGoBack = () => {
+    navigate(-1);
   };
   return (
     <div className="card-technician__details">
@@ -65,9 +69,9 @@ const TechnicianDetails = () => {
           <button type="button" aria-label="Save" id={tech.id} onClick={handleDelete}>
             <DeleteForeverRoundedIcon />
           </button>
-          <Link to="/">
-            <button type="button">Back</button>
-          </Link>
+          <button onClick={handleGoBack} type="button">
+            Back
+          </button>
         </div>
       </div>
     </div>
