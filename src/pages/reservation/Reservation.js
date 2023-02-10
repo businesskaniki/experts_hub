@@ -32,30 +32,30 @@ const Reservation = ({ userId }) => {
           <Card key={reservation.id} className="reserve-cont">
             <CardMedia
               sx={{ height: 200 }}
-              image={reservation.technician?.image}
+              image={reservation.technician?.image || reservation.appointment.technician?.image}
               title={reservation.technician?.name}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div" className="reserve-name">
                 <Link to={`/technician/${reservation.technician?.id}`}>
-                  {reservation.technician?.name}
+                  {reservation.technician?.name || reservation.appointment.technician?.name}
                 </Link>
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Date:
                 {' '}
-                {reservation.date}
+                {reservation.date || reservation.appointment.date}
               </Typography>
               <Typography variant="body2" color="text.primary">
                 Charges:
                 {' '}
                 $
-                {reservation.technician?.charges}
+                {reservation.technician?.charges || reservation.appointment.technician?.charges}
               </Typography>
               <Typography>
                 Location:
                 {' '}
-                {reservation.location}
+                {reservation.location || reservation.appointment.location}
               </Typography>
             </CardContent>
             <CardActions>
