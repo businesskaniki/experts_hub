@@ -26,7 +26,7 @@ const Reservation = ({ userId }) => {
   };
 
   return (
-    <section>
+    <section className="reserve-cover-section">
       {reservations?.map((reservation) => (
         <div key={reservation.id} className="reserve-cover">
           <Card key={reservation.id} className="reserve-cont">

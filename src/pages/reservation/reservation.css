@@ -24,3 +24,7 @@
   text-align: center;
   font-weight: bold !important;
 }
+
+.reserve-cover-section {
+  display: flex;
+}

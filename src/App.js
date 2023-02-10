@@ -3,7 +3,6 @@ import {
   createBrowserRouter, Navigate, Outlet, RouterProvider,
 } from 'react-router-dom';
 import Leftbar from './components/leftbar/Leftbar';
-import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
@@ -19,7 +18,6 @@ import AddReservation from './pages/reservation/AddReservation';
 function App() {
   const Layout = () => (
     <div>
-      <Navbar />
       <div style={{ display: 'flex' }}>
         <Leftbar />
         <Outlet />
