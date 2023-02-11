@@ -3,7 +3,7 @@ import './footer.scss';
 
 const Footer = () => (
   <div className="footer">
-    Footer
+    Copyright © 2023
   </div>
 );
 

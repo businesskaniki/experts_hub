@@ -3,7 +3,6 @@ import {
   createBrowserRouter, Navigate, Outlet, RouterProvider,
 } from 'react-router-dom';
 import Leftbar from './components/leftbar/Leftbar';
-import Footer from './components/footer/Footer';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import Home from './pages/home/Home';
@@ -15,14 +14,13 @@ import Reservations from './pages/reservation/Reservation';
 import Technicians from './pages/technician/Technicians';
 import AddReservation from './pages/reservation/AddReservation';
 
-function App() {
+const App = () => {
   const Layout = () => (
     <div>
       <div style={{ display: 'flex' }}>
         <Leftbar />
         <Outlet />
       </div>
-      <Footer />
     </div>
   );
 
@@ -93,6 +91,6 @@ function App() {
       <RouterProvider router={router} />
     </div>
   );
-}
+};
 
 export default App;

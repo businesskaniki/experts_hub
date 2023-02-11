@@ -13,7 +13,6 @@ import './reservation.css';
 const Reservation = ({ userId }) => {
   const dispatch = useDispatch();
   const reservations = useSelector((state) => state.reservations);
-  console.log(reservations);
 
   useEffect(() => {
     if (!reservations.length) {
