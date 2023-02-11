@@ -14,7 +14,7 @@ import Reservations from './pages/reservation/Reservation';
 import Technicians from './pages/technician/Technicians';
 import AddReservation from './pages/reservation/AddReservation';
 
-function App() {
+const App = () => {
   const Layout = () => (
     <div>
       <div style={{ display: 'flex' }}>
@@ -91,6 +91,6 @@ function App() {
       <RouterProvider router={router} />
     </div>
   );
-}
+};
 
 export default App;
