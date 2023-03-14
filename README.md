@@ -69,7 +69,7 @@ ExpertHub is a technician reservasation website that provide the public with an 
 
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-- [Coming Soon](https://later/)
+- [Expert Hubs](https://homeofexperts.netlify.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
