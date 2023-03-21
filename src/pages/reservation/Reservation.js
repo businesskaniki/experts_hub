@@ -26,7 +26,7 @@ const Reservation = ({ userId }) => {
 
   return (
     <div>
-      {reservations.length === 0 && <div>You currently have no pending reservation</div>}
+      {reservations.length === 0 && <div className="zero-length">You currently have no pending reservation</div>}
       <section className="reserve-cover-section">
         {reservations?.map((reservation) => (
           <div key={reservation.id} className="reserve-cover">
