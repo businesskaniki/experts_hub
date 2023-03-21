@@ -84,7 +84,7 @@ $white: #ffff;
 @media only screen and (max-width: 767px) {
   .leftbar {
     flex-direction: column;
-    display: none;
+    // display: none;
   }
 
   .menu {
