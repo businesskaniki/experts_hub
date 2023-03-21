@@ -23,7 +23,7 @@ const Home = () => {
       {technicians.map((technician) => (
         <Card sx={{ maxWidth: 400, height: 400 }} key={technician.id}>
 
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" style={{ paddingLeft: '10px', fontWeight: 'bold' }}>
             <Link to={`/technician/${technician.id}`}>
               {technician.name}
             </Link>
